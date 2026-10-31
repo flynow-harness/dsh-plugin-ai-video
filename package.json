@@ -1,0 +1,153 @@
+{
+  "name": "dsh-plugin-ai-video",
+  "version": "0.1.0",
+  "description": "AI video studio for DeepSeek Harness: outline → storyboard → narration → subtitles → MP4, driven by the agent",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "ai-video",
+    "storyboard",
+    "text-to-speech",
+    "ffmpeg",
+    "remotion-alternative"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@11.28.5",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flynow-harness/dsh-plugin-ai-video.git"
+  },
+  "bugs": {
+    "url": "https://github.com/flynow-harness/dsh-plugin-ai-video/issues"
+  },
+  "homepage": "https://github.com/flynow-harness/dsh-plugin-ai-video#readme",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "icon.svg",
+    "lib/client.js",
+    "lib/client.js.map",
+    "lib/index.js",
+    "lib/types/**/*.d.ts",
+    "docs/images/"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-session-controller",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-client-ui-tool"
+      ],
+      "platform": "web"
+    }
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "npm run clean && tsdown && tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.2.2-alpha.2 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.6-alpha.1",
+    "@deepseek-ai/dsh-api-session-controller": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-locale": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-primitives": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-session": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-tool": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-llm": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-tools": "0.2.2-alpha.2",
+    "@deepseek-ai/schemastery": "~3.18.6-alpha.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@deepseek-ai/dsh-util-values": "0.2.2-alpha.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-api-session-controller": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-locale": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-conversation": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-primitives": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-renderer": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-session": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-client-ui-tool": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-llm": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-util-values": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.6-alpha.1",
+    "@deepseek-ai/dsh-api-session-controller": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-locale": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-conversation": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-primitives": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-renderer": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-session": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-slots": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-client-ui-tool": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-llm": "0.2.2-alpha.2",
+    "@deepseek-ai/dsh-tools": "0.2.2-alpha.2",
+    "@deepseek-ai/schemastery": "~3.18.6-alpha.1",
+    "@types/node": "^24.10.0",
+    "@types/react": "~18.3.1",
+    "@types/react-dom": "~18.3.0",
+    "lightningcss": "^1.32.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rolldown": "1.1.1",
+    "tsdown": "0.22.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.8",
+    "@deepseek-ai/dsh-util-values": "0.2.2-alpha.2"
+  },
+  "author": "flynow-harness"
+}

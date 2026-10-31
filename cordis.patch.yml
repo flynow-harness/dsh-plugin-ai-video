@@ -1,0 +1,6 @@
+# Insert the AI video studio: `video_*` tools on the Host and storyboard
+# cards in the Web GUI. Configuration defaults live in the plugin schema; add a
+# `config:` block in your profile patch to point it at a TTS/image gateway.
+- insert:
+    - id: ai-video
+      name: 'dsh-plugin-ai-video'
